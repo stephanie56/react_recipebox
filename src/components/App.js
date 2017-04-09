@@ -37,9 +37,10 @@ class App extends Component {
     console.log('Add a recipe!');
   }
 
-  _deleteRecipe() {
-    alert('Delete a recipe!');
-    console.log('Delete a recipe!');
+  _deleteRecipe(idx) {
+    this.setState((state)=>{
+      recipes: state.recipes.splice(idx, 1)
+    });
   }
 
   _editRecipe() {
@@ -71,11 +72,13 @@ class App extends Component {
             return(
               <RecipeBox
                 key={index}
+                index={index}
                 name={recipe.name}
                 ingredients={recipe.ingredients}
                 showForm={this.state.showEditForm}
                 toggleForm={this._toggleEditForm.bind(this)}
                 updateRecipe={this._editRecipe.bind(this)}
+                deleteRecipe={this._deleteRecipe.bind(this)}
               />
             )
           })
@@ -83,8 +86,13 @@ class App extends Component {
         <RecipeForm
           showForm={this.state.showAddForm}
           toggleForm={this._toggleAddForm.bind(this)}
-          updateRecipe={this._addRecipe.bind(this)} />
-        <input type="button" value="Add Recipe" onClick={this._toggleAddForm.bind(this)}/>
+          updateRecipe={this._addRecipe.bind(this)}
+        />
+        <input
+          type="button"
+          value="Add Recipe"
+          onClick={this._toggleAddForm.bind(this)}
+        />
       </div>
     );
   }

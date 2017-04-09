@@ -11,9 +11,14 @@ class RecipeBox extends Component {
   }
   //methods
   _toggleIngredients() {
+    console.log('handle ingredients');
     this.setState({
       showIngredients: !this.state.showIngredients,
     })
+  }
+
+  _handleDelete() {
+    this.props.deleteRecipe(this.props.index);
   }
 
   render() {
@@ -32,7 +37,9 @@ class RecipeBox extends Component {
         />
 
         <div className="boxHeader">
-          <a href="#" onClick={this._toggleIngredients.bind(this)}>{this.props.name}</a>
+          <a href="#" onClick={this._toggleIngredients.bind(this)} >
+            {this.props.name}
+          </a>
         </div>
 
         <div className={ contentClasses }>
@@ -47,7 +54,7 @@ class RecipeBox extends Component {
               })
             }
           </ul>
-          <input type="button" value="Delete"/>
+          <input type="button" value="Delete" onClick={this._handleDelete.bind(this)}/>
           <input type="button" value="Edit" onClick={this.props.toggleForm}/>
         </div>
 
