@@ -1,0 +1,82 @@
+
+/** ======== Global ========= **/
+.hidden {
+  display:none;
+}
+
+input[type="button"],input[type="submit"] {
+  background: white;
+  padding:10px 20px;
+  border:1px grey solid;
+  margin-right:5px;
+}
+
+input[type="text"] {
+  width:100%;
+  padding:10px;
+  margin: 10px 0;
+  font-size:1em;
+  box-sizing: border-box;
+}
+
+/** ======== App ========= **/
+.app {
+  max-width:80%;
+  min-width:280px;
+  background-color:#F5F5F5;
+  border:1px solid #777;
+  padding:10px;
+  margin:10px auto;
+}
+
+/** ======== Recipe Box ========= **/
+.recipeBox {
+  margin-bottom: 10px;
+}
+
+.boxHeader {
+  background-color:#DFF0D8;
+  border:1px solid #91aa86;
+  padding:10px;
+}
+
+.boxHeader a {
+  text-decoration: none;
+  color:#5a8248;
+}
+
+/** ======== Recipe Box Content ========= **/
+.boxContent {
+  background-color:white;
+  padding:14px;
+  margin-top:20px;
+}
+
+.boxContent h2 {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.boxContent ul {
+  list-style: none;
+  padding:0;
+}
+
+.boxContent li {
+  margin-bottom:5px;
+  padding:10px;
+  border:1px grey solid;
+}
+
+/** ======== Recipe Form ========= **/
+.recipeform {
+  border:#666 1px solid;
+  border-radius: 2px;
+  background-color: white;
+  padding:30px 30px 40px;
+  position:absolute;
+  width:50%;
+  left:25%;
+  top:10%;
+}
