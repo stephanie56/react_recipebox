@@ -9,6 +9,8 @@ class App extends Component {
     super();
 
     this.state={
+      showBox: false,
+      showForm: false,
       recipes: [
         {
           id: 1,
