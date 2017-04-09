@@ -9,8 +9,8 @@ class App extends Component {
     super();
 
     this.state={
-      showBox: false,
-      showForm: false,
+      showAddForm: false,
+      showEditForm: false,
       recipes: [
         {
           id: 1,
@@ -49,19 +49,19 @@ class App extends Component {
 
 
   // methods - toggle recipeForm and recipeBox
-  _toggleForm() {
-    console.log("let the form shows!");
+  _toggleAddForm() {
+    console.log("let the add form shows!");
     this.setState({
-      showForm:!this.state.showForm,
+      showAddForm:!this.state.showAddForm,
     });
   }
 
-  _toggleBox() {
+  _toggleEditForm() {
+    console.log("let the edit form shows!");
     this.setState({
-      showBox:!this.state.showBox,
+      showEditForm:!this.state.showEditForm,
     });
   }
-
 
   render() {
     return (
@@ -73,17 +73,18 @@ class App extends Component {
                 key={index}
                 name={recipe.name}
                 ingredients={recipe.ingredients}
-                showBox={this.state.showBox}
-                toggleBox={this._toggleBox.bind(this)}
+                showForm={this.state.showEditForm}
+                toggleForm={this._toggleEditForm.bind(this)}
                 updateRecipe={this._editRecipe.bind(this)}
               />
             )
           })
         }
         <RecipeForm
-          showForm={this.state.showForm}
+          showForm={this.state.showAddForm}
+          toggleForm={this._toggleAddForm.bind(this)}
           updateRecipe={this._addRecipe.bind(this)} />
-        <input type="button" value="Add Recipe" onClick={this._toggleForm.bind(this)}/>
+        <input type="button" value="Add Recipe" onClick={this._toggleAddForm.bind(this)}/>
       </div>
     );
   }

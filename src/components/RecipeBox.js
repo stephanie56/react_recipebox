@@ -3,19 +3,36 @@ import RecipeForm from './RecipeForm';
 import className from 'classnames';
 
 class RecipeBox extends Component {
+  constructor() {
+    super();
+    this.state={
+      showIngredients:false,
+    }
+  }
+  //methods
+  _toggleIngredients() {
+    this.setState({
+      showIngredients: !this.state.showIngredients,
+    })
+  }
+
   render() {
     // default boxContent classes: '.boxContent .hidden'
     let contentClasses = className({
       boxContent: true,
-      hidden: !this.props.showBox, // hidden: true
+      hidden: !this.state.showIngredients, // hidden: true
     });
     return (
       <div className="recipeBox">
 
-        <RecipeForm updateRecipe={this.props.updateRecipe} />
+        <RecipeForm
+          showForm={this.props.showForm}
+          toggleForm={this.props.toggleForm}
+          updateRecipe={this.props.updateRecipe}
+        />
 
         <div className="boxHeader">
-          <a href="#" onClick={this.props.toggleBox}>{this.props.name}</a>
+          <a href="#" onClick={this._toggleIngredients.bind(this)}>{this.props.name}</a>
         </div>
 
         <div className={ contentClasses }>
@@ -31,7 +48,7 @@ class RecipeBox extends Component {
             }
           </ul>
           <input type="button" value="Delete"/>
-          <input type="button" value="Edit"/>
+          <input type="button" value="Edit" onClick={this.props.toggleForm}/>
         </div>
 
       </div>
