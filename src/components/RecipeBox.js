@@ -18,7 +18,7 @@ class RecipeBox extends Component {
     })
   }
 
-  // delete recipes. 
+  // delete recipes.
   _handleDelete() {
     this.props.deleteRecipe(this.props.index);
   }
@@ -36,6 +36,9 @@ class RecipeBox extends Component {
           showForm={this.props.showForm}
           toggleForm={this.props.toggleForm}
           updateRecipe={this.props.updateRecipe}
+          defaultId={this.props.id}
+          defaultName={this.props.name}
+          defaultIngredients={this.props.ingredients}
         />
 
         <div className="boxHeader">

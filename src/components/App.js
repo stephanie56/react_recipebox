@@ -44,8 +44,10 @@ class App extends Component {
     });
   }
 
-  _editRecipe() {
-    alert('Edit a recipe!');
+  _editRecipe(obj, idx) {
+    // this.setState((state) => ({
+    //   recipes: state.recipes.
+    // }));
     console.log('Edit a recipe!');
   }
 
@@ -74,6 +76,7 @@ class App extends Component {
               <RecipeBox
                 key={index}
                 index={index}
+                id={recipe.id}
                 name={recipe.name}
                 ingredients={recipe.ingredients}
                 showForm={this.state.showEditForm}

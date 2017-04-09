@@ -30,10 +30,10 @@ class RecipeForm extends Component {
       <div className={ formClasses }>
         <form onSubmit={this._handleRecipeUpdate.bind(this)}>
           <label>Recipe name
-            <input type="text" ref="name"/>
+            <input type="text" ref="name" defaultValue={this.props.defaultName || ""} />
           </label>
           <label>Ingredients
-            <input type="text" ref="ingredients"/>
+            <input type="text" ref="ingredients" defaultValue={this.props.defaultIngredients || ""}/>
           </label>
           <input type="button" value="Close" onClick={this.props.toggleForm} />
           <input type="submit" value="Submit"/>
