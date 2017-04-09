@@ -31,7 +31,7 @@ class App extends Component {
     }
   }
 
-  // methods
+  // methods - recipes
   _addRecipe() {
     alert('Add a recipe!');
     console.log('Add a recipe!');
@@ -47,6 +47,22 @@ class App extends Component {
     console.log('Edit a recipe!');
   }
 
+
+  // methods - toggle recipeForm and recipeBox
+  _toggleForm() {
+    console.log("let the form shows!");
+    this.setState({
+      showForm:!this.state.showForm,
+    });
+  }
+
+  _toggleBox() {
+    this.setState({
+      showBox:!this.state.showBox,
+    });
+  }
+
+
   render() {
     return (
       <div className="app">
@@ -57,12 +73,17 @@ class App extends Component {
                 key={index}
                 name={recipe.name}
                 ingredients={recipe.ingredients}
+                showBox={this.state.showBox}
+                toggleBox={this._toggleBox.bind(this)}
+                updateRecipe={this._editRecipe.bind(this)}
               />
             )
           })
         }
-        <RecipeForm content={'I\'m here to add a recipe.'} />
-        <input type="button" value="Add Recipe" />
+        <RecipeForm
+          showForm={this.state.showForm}
+          updateRecipe={this._addRecipe.bind(this)} />
+        <input type="button" value="Add Recipe" onClick={this._toggleForm.bind(this)}/>
       </div>
     );
   }

@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import RecipeForm from './RecipeForm';
+import className from 'classnames';
 
 class RecipeBox extends Component {
   render() {
+    // default boxContent classes: '.boxContent .hidden'
+    let contentClasses = className({
+      boxContent: true,
+      hidden: !this.props.showBox, // hidden: true
+    });
     return (
       <div className="recipeBox">
 
-        <RecipeForm content={'I\'m here to edit a recipe.'} />
+        <RecipeForm updateRecipe={this.props.updateRecipe} />
 
         <div className="boxHeader">
-          <a href="#">{this.props.name}</a>
+          <a href="#" onClick={this.props.toggleBox}>{this.props.name}</a>
         </div>
 
-        <div className="boxContent">
+        <div className={ contentClasses }>
           <h2>Ingredients</h2>
           <hr />
           <ul>

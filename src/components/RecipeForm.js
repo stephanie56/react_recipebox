@@ -18,7 +18,7 @@ class RecipeForm extends Component {
             <input type="text" />
           </label>
           <input type="button" value="Close" />
-          <input type="button" value="Update Recipe" />
+          <input type="button" value="Update Recipe" onClick={this.props.updateRecipe}/>
         </form>
       </div>
     );
