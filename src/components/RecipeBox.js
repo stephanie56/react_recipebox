@@ -9,7 +9,8 @@ class RecipeBox extends Component {
       showIngredients:false,
     }
   }
-  //methods
+
+  // toggle recipes.
   _toggleIngredients() {
     console.log('handle ingredients');
     this.setState({
@@ -17,6 +18,7 @@ class RecipeBox extends Component {
     })
   }
 
+  // delete recipes. 
   _handleDelete() {
     this.props.deleteRecipe(this.props.index);
   }

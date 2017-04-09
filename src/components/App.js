@@ -32,8 +32,10 @@ class App extends Component {
   }
 
   // methods - recipes
-  _addRecipe() {
-    alert('Add a recipe!');
+  _addRecipe(obj) {
+    this.setState((state)=>{
+      recipes: state.recipes.push(obj);
+    });
     console.log('Add a recipe!');
   }
 
