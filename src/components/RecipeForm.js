@@ -4,16 +4,21 @@ import className from 'classnames';
 class RecipeForm extends Component {
 
   // pass form info obj to addRecipe or editRecipe
-  _handleRecipeUpdate() {
+  _handleRecipeUpdate(e) {
+    e.preventDefault();
     // collect form info
     let form = {};
-    form.id = 5;
-    form.name = "blabla";
-    form.ingredients = ['1', 'hhhh'];
+    form.id = this.props.numOfRecipes;
+    form.name = this.refs.name.value;
+    form.ingredients = this.refs.ingredients.value.split(',');
     console.log(form);
     this.props.updateRecipe(form);
     this.props.toggleForm();
+    // clear form entries
+    this.refs.name.value = "";
+    this.refs.ingredients.value = "";
   }
+
 
   render() {
     // default recipeform classes: '.recipeform .hidden'
@@ -23,15 +28,15 @@ class RecipeForm extends Component {
     });
     return (
       <div className={ formClasses }>
-        <form>
+        <form onSubmit={this._handleRecipeUpdate.bind(this)}>
           <label>Recipe name
-            <input type="text" />
+            <input type="text" ref="name"/>
           </label>
           <label>Ingredients
-            <input type="text" />
+            <input type="text" ref="ingredients"/>
           </label>
           <input type="button" value="Close" onClick={this.props.toggleForm} />
-          <input type="button" value="Submit" onClick={this._handleRecipeUpdate.bind(this)}/>
+          <input type="submit" value="Submit"/>
         </form>
       </div>
     );

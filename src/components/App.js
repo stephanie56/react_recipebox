@@ -33,14 +33,13 @@ class App extends Component {
 
   // methods - recipes
   _addRecipe(obj) {
-    this.setState((state)=>{
-      recipes: state.recipes.push(obj);
-    });
-    console.log('Add a recipe!');
+    this.setState((state) => ({
+      recipes: state.recipes.concat(obj)
+    }));
   }
 
   _deleteRecipe(idx) {
-    this.setState((state)=>{
+    this.setState((state) => {
       recipes: state.recipes.splice(idx, 1)
     });
   }
@@ -87,6 +86,7 @@ class App extends Component {
         }
         <RecipeForm
           showForm={this.state.showAddForm}
+          numOfRecipes={this.state.recipes.length}
           toggleForm={this._toggleAddForm.bind(this)}
           updateRecipe={this._addRecipe.bind(this)}
         />
