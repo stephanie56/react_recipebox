@@ -8,11 +8,12 @@ class RecipeForm extends Component {
     e.preventDefault();
     // collect form info
     let form = {};
+    var idx = this.props.index;
     form.id = this.props.numOfRecipes;
     form.name = this.refs.name.value;
     form.ingredients = this.refs.ingredients.value.split(',');
     console.log(form);
-    this.props.updateRecipe(form);
+    this.props.updateRecipe(form, idx);
     this.props.toggleForm();
     // clear form entries
     this.refs.name.value = "";

@@ -36,6 +36,7 @@ class RecipeBox extends Component {
           showForm={this.props.showForm}
           toggleForm={this.props.toggleForm}
           updateRecipe={this.props.updateRecipe}
+          index={this.props.index}
           defaultId={this.props.id}
           defaultName={this.props.name}
           defaultIngredients={this.props.ingredients}

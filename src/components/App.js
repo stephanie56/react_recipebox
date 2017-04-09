@@ -45,10 +45,13 @@ class App extends Component {
   }
 
   _editRecipe(obj, idx) {
-    // this.setState((state) => ({
-    //   recipes: state.recipes.
-    // }));
-    console.log('Edit a recipe!');
+    // let oldRecipes = this.state.recipes;
+    let newRecipes = this.state.recipes.slice();
+    newRecipes[idx] = obj;
+    this.setState({
+      recipes:newRecipes,
+    });
+    console.log(newRecipes);
   }
 
 
