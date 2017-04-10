@@ -9,7 +9,7 @@ class RecipeForm extends Component {
     // collect form info
     let form = {};
     var idx = this.props.index;
-    form.id = this.props.numOfRecipes;
+    form.id = this.props.numOfRecipes + 1;
     form.name = this.refs.name.value;
     form.ingredients = this.refs.ingredients.value.split(',');
     console.log(form);

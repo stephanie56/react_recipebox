@@ -11,7 +11,7 @@ class App extends Component {
     this.state={
       showAddForm: false,
       showEditForm: false,
-      recipes: JSON.parse(localStorage.getItem('savedRecipes')) || [        {
+      recipes: JSON.parse(localStorage.getItem('savedRecipes')) || [{
                 id: 1,
                 name: 'Caramelized Onion Pork Chops',
                 ingredients: ['1 tablespoon vegetable oil', '4 pork loin chops', '3 teaspoons seasoning salt', '2 teaspoons black pepper'],
@@ -30,12 +30,17 @@ class App extends Component {
     }
   }
 
+  componentWillMount() {
+      console.table(this.state.recipes);
+  }
+
   componentDidUpdate(){
    localStorage.setItem('savedRecipes', JSON.stringify(this.state.recipes));
   }
 
   // methods - recipes
-  _addRecipe(obj) {
+  _addRecipe(obj, idx) {
+    console.log(idx);
     this.setState((state) => ({
       recipes: state.recipes.concat(obj)
     }));
@@ -48,7 +53,7 @@ class App extends Component {
   }
 
   _editRecipe(obj, idx) {
-    // let oldRecipes = this.state.recipes;
+    obj.id = idx + 1;
     let newRecipes = this.state.recipes.slice();
     newRecipes[idx] = obj;
     this.setState({
