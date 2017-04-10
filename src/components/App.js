@@ -11,24 +11,27 @@ class App extends Component {
     this.state={
       showAddForm: false,
       showEditForm: false,
-      recipes: [
-        {
-          id: 1,
-          name: 'Caramelized Onion Pork Chops',
-          ingredients: ['1 tablespoon vegetable oil', '4 pork loin chops', '3 teaspoons seasoning salt', '2 teaspoons black pepper'],
-        },
-        {
-          id: 2,
-          name: 'Meatloaf',
-          ingredients: ['4 tablespoon olive oil', '1 pound ground beef', '2 eggs'],
-        },
-        {
-          id: 3,
-          name: 'Sweet Spicy Chicken',
-          ingredients: ['1 tablespoon brown sugar', '4 pounds of chicken breast', '1 teaspoon seasoning salt', '2 teaspoons white pepper'],
-        },
-      ],
+      recipes: JSON.parse(localStorage.getItem('savedRecipes')) || [        {
+                id: 1,
+                name: 'Caramelized Onion Pork Chops',
+                ingredients: ['1 tablespoon vegetable oil', '4 pork loin chops', '3 teaspoons seasoning salt', '2 teaspoons black pepper'],
+              },
+              {
+                id: 2,
+                name: 'Meatloaf',
+                ingredients: ['4 tablespoon olive oil', '1 pound ground beef', '2 eggs'],
+              },
+              {
+                id: 3,
+                name: 'Sweet Spicy Chicken',
+                ingredients: ['1 tablespoon brown sugar', '4 pounds of chicken breast', '1 teaspoon seasoning salt', '2 teaspoons white pepper'],
+              },
+            ],
     }
+  }
+
+  componentDidUpdate(){
+   localStorage.setItem('savedRecipes', JSON.stringify(this.state.recipes));
   }
 
   // methods - recipes
@@ -51,7 +54,6 @@ class App extends Component {
     this.setState({
       recipes:newRecipes,
     });
-    console.log(newRecipes);
   }
 
 
