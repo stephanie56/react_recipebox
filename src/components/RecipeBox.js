@@ -7,6 +7,7 @@ class RecipeBox extends Component {
     super();
     this.state={
       showIngredients:false,
+      showEditForm:false,
     }
   }
 
@@ -15,7 +16,15 @@ class RecipeBox extends Component {
     console.log('handle ingredients');
     this.setState({
       showIngredients: !this.state.showIngredients,
-    })
+    });
+  }
+
+  // toggle edit form
+  _toggleEditForm() {
+    console.log('show edit form!');
+    this.setState({
+      showEditForm: !this.state.showEditForm,
+    });
   }
 
   // delete recipes.
@@ -33,8 +42,8 @@ class RecipeBox extends Component {
       <div className="recipeBox">
 
         <RecipeForm
-          showForm={this.props.showForm}
-          toggleForm={this.props.toggleForm}
+          showForm={this.state.showEditForm}
+          toggleForm={this._toggleEditForm.bind(this)}
           updateRecipe={this.props.updateRecipe}
           index={this.props.index}
           defaultId={this.props.id}
@@ -61,7 +70,7 @@ class RecipeBox extends Component {
             }
           </ul>
           <input type="button" value="Delete" onClick={this._handleDelete.bind(this)}/>
-          <input type="button" value="Edit" onClick={this.props.toggleForm}/>
+          <input type="button" value="Edit" onClick={this._toggleEditForm.bind(this)}/>
         </div>
 
       </div>

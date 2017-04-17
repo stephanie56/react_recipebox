@@ -102,6 +102,8 @@ class App extends Component {
           numOfRecipes={this.state.recipes.length}
           toggleForm={this._toggleAddForm.bind(this)}
           updateRecipe={this._addRecipe.bind(this)}
+          defaultName={"empty"}
+          defaultIngredients={"empty"}
         />
         <input
           type="button"
