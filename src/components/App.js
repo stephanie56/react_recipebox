@@ -53,9 +53,9 @@ class App extends Component {
   }
 
   _editRecipe(obj, idx) {
-    obj.id = idx + 1;
     let newRecipes = this.state.recipes.slice();
     newRecipes[idx] = obj;
+    obj.id = idx + 1;
     this.setState({
       recipes:newRecipes,
     });
@@ -102,8 +102,8 @@ class App extends Component {
           numOfRecipes={this.state.recipes.length}
           toggleForm={this._toggleAddForm.bind(this)}
           updateRecipe={this._addRecipe.bind(this)}
-          defaultName={"empty"}
-          defaultIngredients={"empty"}
+          defaultName={""}
+          defaultIngredients={""}
         />
         <input
           type="button"
